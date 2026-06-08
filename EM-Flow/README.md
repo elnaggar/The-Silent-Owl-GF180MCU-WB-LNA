@@ -5,5 +5,5 @@ The flows were originally developed for [IHP-SG13G2 open-source PDK](https://git
 You can inspect the stack by using [setupEM](https://github.com/VolkerMuehlhaus/setupEM).  
 The Layers `TPMIM`, `MIM_equiv` and `VMIM` are only dedicated to simulate MIM caps. Their stack is adjusted to simulate MIM caps with 2.0&nbsp;fF/µm².
  Other special passive structures in these three layers are not possible to be simulated correctly.  
- Be aware when you are simulating MIMs to move the MIM-Vias from TM1 to a new Layer `NR-XYZ` and give that layer number `NR-XYZ` to the layer `VMIM` in the stack.   
-Special thanks for [Volker Muehlhaus](https://github.com/VolkerMuehlhaus) for his guidance during this contribution.
+ Be aware when you are simulating MIMs to move the MIM-Vias from TM1 to a new Layer `NR-XYZ` and give that layer number `NR-XYZ` to the layer `VMIM` in the stack. Otherwise you would short the MIM cap.  
+ Special thanks for [Volker Muehlhaus](https://github.com/VolkerMuehlhaus) for his guidance during this contribution.
