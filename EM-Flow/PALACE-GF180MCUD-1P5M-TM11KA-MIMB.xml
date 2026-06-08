@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+  <Stackup schemaVersion="2.0">
+    <Materials>
+      <Material Name="M" Type="Conductor" Permittivity="1.0" DielectricLossTangent="0.0" Conductivity="20202020.20" Color="39bfff"/>
+      <Material Name="TM" Type="Conductor" Permittivity="1.0" DielectricLossTangent="0.0" Conductivity="20964360.58" Color="ffe6bf"/>
+      <Material Name="MIMM" Type="Conductor" Permittivity="1.0" DielectricLossTangent="0.0" Conductivity="14724504.52" Color="ffe6bf"/>
+	 <Material Name="V" Type="Conductor" Permittivity="1.0" DielectricLossTangent="0.0" Conductivity="1972386.58" Color="9ba940"/>
+      <Material Name="TV" Type="Conductor" Permittivity="1.0" DielectricLossTangent="0.0" Conductivity="2958579.88" Color="ffe6bf"/>
+      <Material Name="MIMV" Type="Conductor" Permittivity="1.0" DielectricLossTangent="0.0" Conductivity="1660092.04" Color="ffe6bf"/>  
+      <Material Name="NITR" Type="Dielectric" Permittivity="7.0" DielectricLossTangent="0.0" Conductivity="0.0" Color="a0a0f0"/>
+      <Material Name="SIO2" Type="Dielectric" Permittivity="4.0" DielectricLossTangent="0.0" Conductivity="0.0" Color="fffcad"/>
+      <Material Name="AIR" Type="Dielectric" Permittivity="1.0" DielectricLossTangent="0.0" Conductivity="0.0" Color="d0d0d0"/>
+	<Material Name="Substrate" Type="Semiconductor" Permittivity="11.9" DielectricLossTangent="0" Conductivity="2.0" Color="01e0ff"/>
+	<Material Name="MIM_equiv" Type="Dielectric" Permittivity="4" DielectricLossTangent="0.0" Conductivity="0" Color="ff0000"/>
+	</Materials>
+	
+    <ELayers LengthUnit="um">
+      <Dielectrics>
+        <Dielectric Name="AIR" Material="AIR" Thickness="300.0000" />
+        <Dielectric Name="NITRPASS" Material="NITR" Thickness="0.3" />
+        <Dielectric Name="OXPASS" Material="SIO2" Thickness="2.3925" />
+        <Dielectric Name="IMD4" Material="SIO2" Thickness="1.45" />
+        <Dielectric Name="IMD3" Material="SIO2" Thickness="1.15" />
+        <Dielectric Name="IMD2" Material="SIO2" Thickness="1.15" />
+        <Dielectric Name="IMD1" Material="SIO2" Thickness="1.15" />
+        <Dielectric Name="ILD" Material="SIO2" Thickness="0.086" />
+        <Dielectric Name="NITRLN" Material="NITR" Thickness="0.05" />
+        <Dielectric Name="STI" Material="SIO2" Thickness="0.32" />
+	<Dielectric Name="Substrate" Material="Substrate" Thickness="191.9205" />
+      </Dielectrics>
+	  
+      <Layers>
+        <Substrate Offset="191.147"/>
+        <Layer Name="M1" Type="conductor" Zmin="1.23" Zmax="1.78" Material="M" Layer="34" />
+		<Layer Name="V1" Type="via" Zmin="1.78" Zmax="2.38" Material="V" Layer="35" />
+        <Layer Name="M2" Type="conductor" Zmin="2.38" Zmax="2.93" Material="M" Layer="36" />
+		<Layer Name="V2" Type="via" Zmin="2.93" Zmax="3.53" Material="V" Layer="38" />
+        <Layer Name="M3" Type="conductor" Zmin="3.53" Zmax="4.08" Material="M" Layer="42" />
+		<Layer Name="V3" Type="via" Zmin="4.08" Zmax="4.68" Material="V" Layer="40" />
+        <Layer Name="M4" Type="conductor" Zmin="4.68" Zmax="5.23" Material="M" Layer="46" />
+		<Layer Name="MIM_DK" Type="conductor" Zmin="5.23" Zmax="5.2477" Material="MIM_equiv" Layer="75"/>
+        <Layer Name="TPMIM" Type="conductor" Zmin="5.2477" Zmax="5.625" Material="MIMM" Layer="75" />
+        <Layer Name="VMIM" Type="via" Zmin="5.625" Zmax="6.13" Material="M" Layer="41" />
+		<Layer Name="TV" Type="via" Zmin="5.23" Zmax="6.13" Material="TV" Layer="41" />
+        <Layer Name="TM" Type="conductor" Zmin="6.13" Zmax="7.3225" Material="TM" Layer="53" />
+      </Layers>
+    </ELayers>
+  </Stackup>
+
