@@ -13,8 +13,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1
-x2=11.47
+x1=0.4765
+x2=10.9465
 divx=5
 subdivx=8
 xlabmag=1.0
@@ -37,8 +37,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1
-x2=11.47
+x1=0.4765
+x2=10.9465
 divx=5
 subdivx=8
 xlabmag=1.0
@@ -53,8 +53,60 @@ autoload=1
 color="4 7"
 node="ph(s_1_1)
 ph(s_2_2)"}
+B 2 1665 -640 2275 -360 {flags=graph
+y1=-0.3
+y2=2.5
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=m
+x1=0.4765
+x2=10.9465
+divx=5
+subdivx=8
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=1
+logy=0
+rawfile=$netlist_dir/sp_analog_pad.raw
+sim_type=sp
+autoload=1
+color="4 7"
+node="im(y_1_1)
+im(y_2_2)"}
+B 2 1665 -360 2275 -80 {flags=graph
+y1=4.9e-12
+y2=6.1e-12
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=0.4765
+x2=10.9465
+divx=5
+subdivx=8
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=1
+logy=0
+rawfile=$netlist_dir/sp_analog_pad.raw
+sim_type=sp
+autoload=1
+color="4 7"
+node="\\"im(y_1_1) frequency /\\"
+\\"im(y_2_2) frequency /\\""
+hilight_wave=1}
+T {Press Ctrl+T on the block to toggle it:
+Red = Shorted
+Broken lines = disabled (Open)} 1750 -730 0 0 0.4 0.4 {}
 N 780 -630 780 -570 {lab=Vin}
-N 780 -510 780 -470 {lab=0}
+N 650 -510 650 -470 {lab=0}
 N 500 -560 500 -510 {lab=0}
 N 460 -560 460 -510 {lab=0}
 N 460 -750 460 -700 {lab=DVDD}
@@ -63,43 +115,47 @@ N 260 -660 260 -610 {lab=VDD}
 N 180 -660 180 -610 {lab=DVDD}
 N 260 -550 260 -500 {lab=0}
 N 180 -550 180 -500 {lab=0}
-N 620 -630 780 -630 {lab=Vin}
-N 830 -270 830 -210 {lab=P_ASIG5V}
+N 830 -270 830 -210 {lab=#net1}
 N 830 -140 830 -120 {lab=0}
 N 830 -150 830 -140 {lab=0}
 N 830 -120 830 -110 {lab=0}
-N 300 -430 510 -430 {lab=#net1
+N 300 -430 510 -430 {lab=#net2
 }
-N 300 -430 300 -300 {lab=#net1
+N 300 -430 300 -300 {lab=#net2
 }
 N 300 -240 300 -110 {lab=0
 }
 N 300 -110 510 -110 {lab=0
 }
-N 510 -430 510 -380 {lab=#net1
+N 510 -430 510 -380 {lab=#net2
 }
 N 510 -320 510 -220 {lab=P_ASIG5V
 }
 N 510 -160 510 -110 {lab=0
 }
-N 150 -430 150 -300 {lab=#net1
+N 150 -430 150 -300 {lab=#net2
 }
-N 150 -430 300 -430 {lab=#net1
+N 150 -430 300 -430 {lab=#net2
 }
 N 150 -240 150 -110 {lab=0
 }
 N 150 -110 300 -110 {lab=0
 }
-N 510 -270 830 -270 {lab=P_ASIG5V
-}
-N 510 -430 610 -430 {lab=#net1
+N 510 -430 610 -430 {lab=#net2
 }
 N 670 -430 770 -430 {lab=P_DVDD
 }
 N 970 -430 970 -380 {lab=P_DVDD}
 N 970 -320 970 -270 {lab=0}
 N 770 -430 970 -430 {lab=P_DVDD}
-N 510 -110 830 -110 {lab=0}
+N 710 -270 830 -270 {lab=#net1}
+N 510 -270 650 -270 {lab=P_ASIG5V}
+N 710 -630 780 -630 {lab=Vin}
+N 620 -630 650 -630 {lab=Vin}
+N 710 -110 830 -110 {lab=0}
+N 510 -110 650 -110 {lab=0}
+N 510 -110 510 -90 {lab=0}
+N 710 -510 780 -510 {lab=0}
 C {/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/xschem/gf180mcu_fd_io__asig_5p0.sym} 470 -630 0 0 {name=x1
 }
 C {vsource.sym} 260 -580 0 0 {name=V_VDD value=-5 savecurrent=false}
@@ -133,12 +189,12 @@ value="
 "}
 C {lab_wire.sym} 780 -630 0 1 {name=p4 sig_type=std_logic lab=Vin}
 C {title.sym} 180 -40 0 0 {name=l4 author="Ahmed Elnaggar/A38-SilentOwl"}
-C {gnd.sym} 780 -470 0 0 {name=l1 lab=0}
+C {gnd.sym} 650 -470 0 0 {name=l1 lab=0}
 C {gnd.sym} 500 -510 0 0 {name=l2 lab=0}
 C {gnd.sym} 260 -500 0 0 {name=l3 lab=0}
 C {gnd.sym} 460 -510 0 0 {name=l5 lab=0}
 C {gnd.sym} 180 -500 0 0 {name=l6 lab=0}
-C {gnd.sym} 830 -110 0 1 {name=l7 lab=0}
+C {gnd.sym} 510 -90 0 1 {name=l7 lab=0}
 C {port_diff.sym} 830 -180 0 1 {name=V1 portnum=2 Z0=50 DCval=0 ACmag=1 ACphase=0 TRANval=}
 C {port_diff.sym} 780 -540 0 1 {name=V2 portnum=1 Z0=50 DCval=0 ACmag=1 ACphase=0 TRANval=}
 C {symbols/diode_nd2ps_06v0.sym} 300 -270 2 0 {name=D0
@@ -173,3 +229,27 @@ C {lab_wire.sym} 510 -270 0 0 {name=p8 sig_type=std_logic lab=P_ASIG5V
 C {ammeter.sym} 640 -430 1 0 {name=Vmeas savecurrent=true }
 C {vsource.sym} 970 -350 0 0 {name=V_DVDD1 value=5 savecurrent=false}
 C {gnd.sym} 970 -270 0 0 {name=l9 lab=0}
+C {ind.sym} 680 -270 1 0 {name=L10
+m=1
+value=3n
+footprint=1206
+device=inductor
+}
+C {ind.sym} 680 -630 1 0 {name=L8
+m=1
+value=3n
+footprint=1206
+device=inductor
+spice_ignore=short}
+C {ind.sym} 680 -110 1 0 {name=L11
+m=1
+value=3n
+footprint=1206
+device=inductor
+spice_ignore=short}
+C {ind.sym} 680 -510 1 0 {name=L12
+m=1
+value=3n
+footprint=1206
+device=inductor
+spice_ignore=short}
