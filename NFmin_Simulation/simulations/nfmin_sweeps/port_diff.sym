@@ -1,12 +1,13 @@
-v {xschem version=3.4.6 file_version=1.2}
+v {xschem version=3.4.8RC file_version=1.3}
 G {}
 K {type=port
 format="@name @@p @@n DC @DCval AC @ACmag @ACphase portnum @portnum z0 @Z0 @TRANval"
-template="name=VPORT1 portnum=1 Z0=50 DCval=0 ACmag=1 ACphase=0 TRANval=\"\""}
+template="name=V1 portnum=1 Z0=50 DCval=0 ACmag=1 ACphase=0 TRANval="""}
 V {}
 S {type=port
 format="@name @@p @@n DC @DCval AC @ACmag @ACphase portnum @portnum z0 @Z0 @TRANval"
-template="name=VPORT1 portnum=1 Z0=50 DCval=0 ACmag=1 ACphase=0 TRANval=\"\""}
+template="name=VPORT1 portnum=1 Z0=50 DCval=0 ACmag=1 ACphase=0 TRANval="""}
+F {}
 E {}
 L 4 -30 -35 -30 -25 {}
 L 4 -30 20 -20 30 {}
