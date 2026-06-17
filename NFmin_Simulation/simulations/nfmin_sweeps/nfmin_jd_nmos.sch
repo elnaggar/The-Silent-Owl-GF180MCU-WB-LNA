@@ -1,9 +1,9 @@
-v {xschem version=3.4.5 file_version=1.2
-}
+v {xschem version=3.4.8RC file_version=1.3}
 G {}
 K {}
 V {}
 S {}
+F {}
 E {}
 N 250 -90 250 -40 {
 lab=GND}
@@ -84,8 +84,6 @@ m=1
 value=10p
 footprint=1206
 device="ceramic capacitor"}
-C {port_diff.sym} -350 -270 0 0 {name=VPORT1 portnum=1 Z0=50 DCval=0 ACmag=1 ACphase=0 TRANval="PWL(0 0)"}
-C {port_diff.sym} -350 -120 0 0 {name=VPORT2 portnum=2 Z0=50 DCval=0 ACmag=1 ACphase=0 TRANval="PWL(0 0)"}
 C {lab_pin.sym} 250 -180 0 0 {name=p3 sig_type=std_logic lab=d}
 C {lab_pin.sym} -310 -300 2 0 {name=p5 sig_type=std_logic lab=in}
 C {lab_pin.sym} -310 -240 2 0 {name=p6 sig_type=std_logic lab=GND
@@ -108,3 +106,5 @@ C {lab_pin.sym} 250 -320 0 0 {name=p11 sig_type=std_logic lab=vdcbias
 C {lab_pin.sym} 50 -120 0 0 {name=p12 sig_type=std_logic lab=vgdc}
 C {lab_pin.sym} 50 -200 0 0 {name=p13 sig_type=std_logic lab=in}
 C {lab_pin.sym} 390 -190 2 0 {name=p14 sig_type=std_logic lab=out}
+C {port_diff.sym} -350 -270 0 0 {name=V1 portnum=1 Z0=50 DCval=0 ACmag=1 ACphase=0 TRANval=""}
+C {port_diff.sym} -350 -120 0 0 {name=V2 portnum=2 Z0=50 DCval=0 ACmag=1 ACphase=0 TRANval=""}
