@@ -84,7 +84,7 @@ source = RF input / GND-side source
 
 ## Running the Analysis Script
 
-Place the analysis script here:
+Analysis script:
 
 ```text
 NFmin_Simulation/scripts/analyze_lna_sweeps.py
@@ -101,7 +101,7 @@ Then run:
 ```bash
 cd NFmin_Simulation/scripts
 python3 analyze_lna_sweeps.py
-
+```
 The script creates:
 
 ```text
