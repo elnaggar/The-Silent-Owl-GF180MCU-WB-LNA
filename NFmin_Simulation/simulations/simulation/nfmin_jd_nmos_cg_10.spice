@@ -1,0 +1,158 @@
+** sch_path: /media/sf_LNA_chipathon/The-Silent-Owl-GF180MCU-WB-LNA/NFmin_Simulation/simulations/10v0/nfmin_jd_nmos_cg_10.sch
+**.subckt nfmin_jd_nmos_cg_10
+VGG g GND {VBIAS}
+VDD vdcbias GND {VDS}
+LDD d vdcbias 1u m=1
+COUT d out 10p m=1
+CIN in s 10p m=1
+V1 in GND DC 0 AC 1 0 portnum 1 z0 50
+V2 out GND DC 0 AC 1 0 portnum 2 z0 50
+LSRC GND s 10u m=1
+XM2 d g s GND nfet_10v0_asym L={L} W={W} nf=1 ad='W * 1.48u' as='W * 0.48u' pd='2 * (W + 1.48u)' ps='2 * (W + 0.48u)' nrd=0 nrs=0 sa=0
++ sb=0 sd=0 m=1
+**** begin user architecture code
+
+
+
+.option savecurrents
+
+.param fnoicor=0
+.param sw_stat_mismatch=0
+
+* ============================================================
+* nfet_10v0_asym common-gate LNA device characterization
+*
+* Device note:
+*   nfet_10v0_asym is an asymmetric 10 V LDNMOS.
+*   Keep drain/source orientation correct:
+*     drain  = high-voltage drain side
+*     source = RF input source side, DC near GND through LSRC
+*
+* Testbench assumption:
+*   Gate DC   = VBIAS
+*   Source DC = near GND through LSRC
+*   Drain DC  = near VDS through RF choke
+*
+* Therefore:
+*   VGS = approximately VBIAS
+*   VDS = approximately selected VDS
+*
+* Nominal comparison sweep:
+*   VDS = 5.0 V fixed
+*   W   = 4, 5, 10, 20, 50 um
+*   L   = 0.60, 0.70, 1.00 um
+*   VGS = 0.50 V to 2.50 V in 5 mV steps
+*
+* Total points:
+*   1 x 5 x 3 x 401 = 6015 points
+*
+* Note:
+*   Do not use W = 0.30 um or 1 um for this 10 V LDNMOS sweep.
+* ============================================================
+
+.param VBIAS=0.9
+.param VDS=5.0
+
+.param W=4.00e-6
+.param L=0.60e-6
+
+.control
+  set noaskquit
+
+  echo VDS_set_V W_m L_m VBIAS_set_V VGS_actual_V VDS_actual_V VBS_actual_V ID_A JD_mA_per_um Pdc_mW gm_S gds_S gm_ID_1_per_V ro_Ohm gmro inv_gm_Ohm NFmin_dB NF_dB Rn_Ohm SOpt_real SOpt_imag SOpt_mag > nmos10_cg_full_nom5v.txt
+
+  foreach vdsval 5.0
+
+    foreach wval 50e-6 75e-6 100e-6 150e-6 200e-6 250e-6 300e-6
+
+      foreach lval 0.60e-6 0.70e-6 1.00e-6
+
+        setplot const
+        let k = 0
+
+        while k <= 400
+
+          setplot const
+          let vgs = 0.50 + 0.005*k
+
+          alterparam VDS = $vdsval
+          alterparam W = $wval
+          alterparam L = $lval
+          alterparam VBIAS = $&vgs
+          reset
+
+          op
+
+          let idn_tmp = abs(i(vdd))
+          let jd_tmp = 1e-3*idn_tmp/$wval
+          let pdc_tmp = 1e3*idn_tmp*$vdsval
+
+          let vgs_tmp = v(g)-v(s)
+          let vds_tmp = v(d)-v(s)
+          let vbs_tmp = -v(s)
+
+          let gm_tmp = @m.xm2.m0[gm]
+          let gds_tmp = @m.xm2.m0[gds]
+
+          let gm_id_tmp = gm_tmp/idn_tmp
+          let ro_tmp = 1/gds_tmp
+          let gmro_tmp = gm_tmp/gds_tmp
+          let inv_gm_tmp = 1/gm_tmp
+
+          set idn_op = $&idn_tmp
+          set jd_op = $&jd_tmp
+          set pdc_op = $&pdc_tmp
+          set vgs_op = $&vgs_tmp
+          set vds_op = $&vds_tmp
+          set vbs_op = $&vbs_tmp
+          set gm_op = $&gm_tmp
+          set gds_op = $&gds_tmp
+          set gm_id_op = $&gm_id_tmp
+          set ro_op = $&ro_tmp
+          set gmro_op = $&gmro_tmp
+          set inv_gm_op = $&inv_gm_tmp
+
+          destroy $curplot
+
+          sp lin 1 2.4e9 2.4e9 1
+
+          let nfmin_val = real(NFmin)
+          let nf_val = real(NF)
+          let rn_val = real(Rn)
+          let sopt_re = real(SOpt)
+          let sopt_im = imag(SOpt)
+          let sopt_mag = sqrt(sopt_re*sopt_re + sopt_im*sopt_im)
+
+          echo $vdsval $wval $lval $&vgs $vgs_op $vds_op $vbs_op $idn_op $jd_op $pdc_op $gm_op $gds_op $gm_id_op $ro_op $gmro_op $inv_gm_op $&nfmin_val $&nf_val $&rn_val $&sopt_re $&sopt_im $&sopt_mag >> nmos10_cg_full_nom5v.txt
+
+          destroy $curplot
+
+          setplot const
+          let k = k + 1
+
+        end
+
+      end
+
+    end
+
+  end
+
+.endc
+
+
+
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
+
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice moscap_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice diode_typical
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/smbb000149.ngspice typical
+
+.include /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/spice/gf180mcu_fd_io.spice
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end
