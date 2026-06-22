@@ -23,7 +23,7 @@ NFmin_Simulation/
 ├── scripts/
 │   └── analyze_lna_sweeps.py
 └── simulations/
-    └── xschem/ngspice testbenches
+    └── 03v0/05v0/06v0/10v0 xschem testbenches
 ```
 
 The `.txt` files in `results/` are generated from ngspice sweeps. The Python analysis script reads these files and creates plots and text summaries in `results/lna_sweep_analysis/`.
