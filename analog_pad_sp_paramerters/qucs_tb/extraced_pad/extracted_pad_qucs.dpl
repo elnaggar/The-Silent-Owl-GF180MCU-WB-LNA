@@ -1,0 +1,38 @@
+<Qucs Schematic 26.1.1>
+<Properties>
+  <View=-135,-475,1912,606,0.773798,0,0>
+  <Grid=10,10,0>
+  <DataSet=extracted_pad_qucs.dat>
+  <DataDisplay=extracted_pad_qucs.dpl>
+  <OpenDisplay=0>
+  <Script=qucs.m>
+  <RunScript=0>
+  <showFrame=0>
+  <FrameText0=Title>
+  <FrameText1=Drawn By:>
+  <FrameText2=Date:>
+  <FrameText3=Revision:>
+</Properties>
+<Symbol>
+</Symbol>
+<Components>
+</Components>
+<Wires>
+</Wires>
+<Diagrams>
+  <Rect 40 509 676 649 3 #c0c0c0 1 00 1 0 1e+09 1e+10 1 0.998667 0.0001 1.00012 1 -1 0.2 1 315 0 225 1 0 0 "" "" "">
+	<"ngspice/ac.db_s11" #ff7800 2 3 0 0 0>
+  </Rect>
+  <Smith 740 508 648 648 3 #c0c0c0 1 00 1 0 1 1 1 0 4 1 1 0 1 1 315 0 225 1 0 0 "" "" "">
+	<"ngspice/ac.s_1_1" #ff7800 2 3 0 0 0>
+	  <Mkr 2.34423e+09 170 -435 3 0 0>
+  </Smith>
+  <Tab 1449 545 325 429 3 #c0c0c0 1 00 1 31 1 1 1 0 1 1 1 0 1 301 315 0 225 1 0 0 "" "" "">
+	<"ngspice/ac.s_1_1" #0000ff 0 3 0 0 0>
+  </Tab>
+  <Tab 1450 85 317 236 3 #c0c0c0 1 00 1 0 1 1 1 0 1 1 1 0 1 301 315 0 225 1 0 0 "" "" "">
+	<"ngspice/ac.s_1_1" #0000ff 0 3 1 0 0>
+  </Tab>
+</Diagrams>
+<Paintings>
+</Paintings>
