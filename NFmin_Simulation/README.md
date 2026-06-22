@@ -154,10 +154,28 @@ gm ≈ 3.4 nS
 1/gm ≈ 2.9e8 ohm
 ```
 
-The filter can be changed from the command line:
+## Key Findings So Far
 
-```bash
-python3 analyze_lna_sweeps.py --min-gm-s 1e-4 --max-inv-gm-ohm 10000
+### 1. NFmin Alone Is Misleading
+
+The best raw `NFmin_dB` points often occur at very low current and very low `gm`. These points were rejected by the practical LNA filter because they are not useful RF input devices.
+
+### 2. Direct 50 Ohm Common-Gate Input Was Not Found for W <= 50 um
+
+In the original CG sweeps, the largest swept width was 50 um. The best practical CG points had approximately:
+
+```text
+gm ≈ 5 mS
+Rin_CG_est ≈ 200 ohm
 ```
+
+## Generated Reports
+
+- [Best overall points by NFmin](results/lna_sweep_analysis/summary_best_overall.txt)
+- [Best point per device/topology](results/lna_sweep_analysis/summary_best_by_device_topology.txt)
+- [Best point per geometry](results/lna_sweep_analysis/summary_best_by_geometry.txt)
+- [Practical score ranking](results/lna_sweep_analysis/summary_practical_score.txt)
+- [Design shortlist](results/lna_sweep_analysis/summary_design_shortlist.txt)
+- [Filter report](results/lna_sweep_analysis/summary_filter_report.txt)
 
 
