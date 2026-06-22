@@ -127,7 +127,7 @@ Two plot sets are generated:
 
 This is useful because raw NFmin plots can show misleading near-off device points with extremely low `NFmin_dB`, but those points are not useful for an actual LNA.
 
-```
+
 ## Practical Filtering
 
 The script filters out operating points that are mathematically low-noise but not useful as LNA input devices.
