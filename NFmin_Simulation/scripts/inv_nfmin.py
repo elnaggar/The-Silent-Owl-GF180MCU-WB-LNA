@@ -5,7 +5,7 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent.parent
 
-RESULTS_DIR = REPO_ROOT / "results" / "nfmin_sweeps"
+RESULTS_DIR = REPO_ROOT / "results"
 jd = pd.read_csv(RESULTS_DIR / "inv_geom_jd.txt", sep=r"\s+")
 nf = pd.read_csv(RESULTS_DIR / "inv_geom_nf.txt", sep=r"\s+")
 

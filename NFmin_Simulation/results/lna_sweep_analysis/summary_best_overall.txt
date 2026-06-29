@@ -1,0 +1,38 @@
+LNA SWEEP ANALYSIS NOTES
+========================
+
+How to read this:
+- These reports use only practical LNA operating points after filtering.
+- NFmin_dB compares the intrinsic noise potential of each device/bias.
+- NF_dB depends on the present source/load setup, so do not rank only by NF_dB.
+- For common-gate candidates, Rin_or_inv_gm_Ohm near 50 ohm is easier to match.
+- For common-source candidates, use SOpt_real, SOpt_imag, and Rn_Ohm for input matching.
+- The score is a practical helper: lower is better. It penalizes high NFmin, power, Rn, poor CG 50-ohm fit, and low gm/ID.
+- The design_score is stricter for real design choice: lower actual NF_dB, lower power, lower Rn, and less edge-like SOpt are preferred.
+
+Filter settings:
+- gm_S >= 0.001 S
+- ID_A >= 1e-05 A
+- Pdc_mW >= 0.01 mW
+- Rin_or_inv_gm_Ohm <= 1000 ohm
+- CG Rin range: 20 to 200 ohm
+- Usable points: 8418
+- Rejected points: 46344
+
+BEST OVERALL POINTS BY NFMIN
+-----------------------------
+
+device          topology  W_m    L_m      VBIAS_set_V  JD_mA_per_um  Pdc_mW    gm_ID_1_per_V  gmro     Rin_or_inv_gm_Ohm  NFmin_dB     NF_dB    Rn_Ohm   SOpt_real  SOpt_imag
+--------------  --------  -----  -------  -----------  ------------  --------  -------------  -------  -----------------  -----------  -------  -------  ---------  ---------
+nfet_05v0       CG        5e-05  6e-07    2.065        0.121359      30.3397   0.933519       35.0043  176.537            0.000959579  5.4964   130.142  0.962885   0.139315 
+nfet_06v0       CG        5e-05  6e-07    2.065        0.121359      30.3397   0.933519       35.0043  176.537            0.000959579  5.4964   130.142  0.962885   0.139315 
+nfet_05v0       CS        5e-05  6e-07    0.69         0.00139258    0.348144  15.1815        85.7559  946.013            0.0068524    5.65825  133.802  0.996603   0.0748635
+nfet_06v0       CS        5e-05  6e-07    0.69         0.00139258    0.348144  15.1815        85.7559  946.013            0.0068524    5.65825  133.802  0.996603   0.0748635
+nfet_03v3       CS        2e-05  2.8e-07  0.84         0.0234704     1.54905   5.35005        27.5672  398.191            0.00900588   7.59691  237.435  0.998893   0.0366103
+nfet_10v0_asym  CS        5e-05  6e-07    1.81         0.0618152     15.4538   1.61515        256.087  200.319            0.252        5.02385  107.398  0.950584   0.216122 
+nfet_10v0_asym  CG        5e-05  6e-07    1.815        0.0623146     15.5787   1.60579        256.15   199.871            0.406123     3.08947  51.244   0.907009   0.114535 
+
+PRACTICAL NEXT STEP
+-------------------
+
+Start with the top NFmin candidates, then reject points with unrealistic power, poor gmro, or hard-to-match SOpt/Rin.
